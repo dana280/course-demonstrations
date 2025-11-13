@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Demonstration 1: Data Preparation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+        
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #FFFBF5 0%, #FFF5E6 100%);
+            padding: 25px 15px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFFBF5;
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: 0 6px 20px rgba(46, 49, 146, 0.1);
+        }
+        
+        h1 {
+            color: #2E3192;
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 35px;
+            font-size: 15px;
+        }
+        
+        details {
+            margin-bottom: 18px;
+            border: 3px solid #879BFF;
+            border-radius: 11px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        details:hover {
+            box-shadow: 0 4px 12px rgba(135, 155, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        details[open] {
+            border-color: #2E3192;
+        }
+        
+        summary {
+            padding: 19px 23px;
+            background: #2E3192;
+            color: white;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 600;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+        
+        summary:hover {
+            background: #3d43b8;
+        }
+        
+        summary:active {
+            background: #879BFF;
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        summary::after {
+            content: '+';
+            font-size: 26px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        
+        details[open] summary {
+            background: #879BFF;
+        }
+        
+        details[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        
+        .content {
+            padding: 23px;
+            font-size: 15px;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .content p {
+            margin-bottom: 14px;
+        }
+        
+        .content strong {
+            color: #2E3192;
+            font-weight: 600;
+        }
+        
+        .content ul {
+            margin: 14px 0;
+            padding-left: 24px;
+        }
+        
+        .content li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        .content ul ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        
+        .highlight-box {
+            margin-top: 18px;
+            padding: 15px;
+            background: #AEBCFF;
+            border-radius: 8px;
+            border-left: 5px solid #2E3192;
+        }
+        
+        .highlight-box strong {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 16px;
+        }
+        
+        .example-box {
+            margin-top: 18px;
+            padding: 15px;
+            background: #F0F4FF;
+            border-radius: 8px;
+            border: 2px solid #879BFF;
+        }
+        
+        .example-box strong {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 16px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 27px;
+            height: 27px;
+            background: #879BFF;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 27px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px 10px;
+            }
+            
+            .container {
+                padding: 25px 20px;
+                border-radius: 10px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            summary {
+                font-size: 16px;
+                padding: 16px 18px;
+            }
+            
+            .content {
+                padding: 18px;
+                font-size: 14px;
+            }
+            
+            .step-number {
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📁 Preparing the Data File for Analysis</h1>
+        <p class="subtitle">Essential steps before statistical analysis</p>
+
+        <!-- Step 1 -->
+        <details>
+            <summary>
+                <span><span class="step-number">1</span>Checking Data Completeness</span>
+            </summary>
+            <div class="content">
+                <p><strong>What we check:</strong></p>
+                <ul>
+                    <li><strong>Questions with excessive missing responses:</strong> Identify questions where more than 33% of respondents didn't answer</li>
+                    <li><strong>Incomplete respondents:</strong> Find participants who didn't answer most questions or skipped important demographic items</li>
+                    <li><strong>Decision criteria:</strong> Consider removing problematic questions or respondents from the dataset</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <strong>🎯 Goal:</strong>
+                    Ensure data quality and completeness before proceeding with analysis
+                </div>
+                
+                <div class="example-box">
+                    <strong>Example:</strong>
+                    If Question 5 has only 10 out of 150 responses (93% missing), it may be too problematic to include in the analysis.
+                </div>
+            </div>
+        </details>
+
+        <!-- Step 2 -->
+        <details>
+            <summary>
+                <span><span class="step-number">2</span>Handling Missing Data & Response Distribution</span>
+            </summary>
+            <div class="content">
+                <p><strong>Actions performed:</strong></p>
+                <ul>
+                    <li><strong>Check frequency distribution:</strong> Examine how responses are distributed across each question's scale</li>
+                    <li><strong>Identify outliers:</strong> Find values that don't match the expected response scale</li>
+                    <li><strong>Define missing values:</strong> Mark "not relevant," "don't know," or "other" responses as missing data</li>
+                    <li><strong>Verify data format:</strong> Ensure all responses are in the appropriate format for calculations (e.g., numerical for means)</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <strong>📊 Statistical Note:</strong>
+                    Missing data should be properly coded to ensure they don't affect mean calculations or statistical tests
+                </div>
+                
+                <div class="example-box">
+                    <strong>Example:</strong>
+                    In a 1-5 satisfaction scale, code "Not Applicable" as 99 and define it as a missing value, so it won't be included when calculating the average satisfaction score.
+                </div>
+            </div>
+        </details>
+
+        <!-- Step 3 -->
+        <details>
+            <summary>
+                <span><span class="step-number">3</span>Creating New Variables</span>
+            </summary>
+            <div class="content">
+                <p><strong>Category reduction process:</strong></p>
+                <ul>
+                    <li><strong>Original scale:</strong> 5-point Likert scale (1 = Not at all, 5 = Very much)</li>
+                    <li><strong>New simplified scale:</strong> 3-point categorization</li>
+                    <li><strong>Recoding scheme:</strong>
+                        <ul>
+                            <li>Categories 1 + 2 → <strong>1 = Low evaluation</strong></li>
+                            <li>Category 3 → <strong>2 = Medium evaluation</strong></li>
+                            <li>Categories 4 + 5 → <strong>3 = High evaluation</strong></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <strong>⚠️ Important:</strong>
+                    New variables (e.g., Q1_new, Q2_new) are added to the file <strong>without overwriting</strong> the original 5-point scale variables. Both versions remain available for different types of analyses.
+                </div>
+                
+                <div class="example-box">
+                    <strong>When to use each version:</strong>
+                    <ul>
+                        <li><strong>5-point scale:</strong> For calculating means and standard deviations</li>
+                        <li><strong>3-point scale:</strong> For frequency distributions and cross-tabulations</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+
+    </div>
+</body>
+</html>
